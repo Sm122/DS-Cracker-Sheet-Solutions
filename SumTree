@@ -1,0 +1,18 @@
+class Tree
+{
+    static int sum(Node node)
+    {
+        if(node==null)
+        return 0;
+        return (sum(node.left)+node.data+sum(node.right));
+    }
+	boolean isSumTree(Node root)
+	{
+             // Your code here
+        if(root==null || (root.left==null&&root.right==null))
+        return true;
+        int ls = sum(root.left);
+        int rs = sum(root.right);
+        return ((root.data==ls+rs)&&isSumTree(root.left)&&isSumTree(root.right));     
+	}
+}
